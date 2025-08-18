@@ -1,0 +1,8 @@
+[user]
+	email = {{ pass "github/personal/email" | trim }}
+	name = {{ pass "github/personal/name" | trim }}
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[includeIf "gitdir:~/work/innowise/"]
+	path = ~/.gitconfig-innowise
