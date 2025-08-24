@@ -1,0 +1,40 @@
+# ~/.zshrc
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# zsh options
+setopt AUTO_CD
+setopt EXTENDED_GLOB
+setopt PROMPT_SUBST
+
+# completions
+autoload -Uz compinit
+compinit -C
+
+# keybindings
+bindkey -e
+bindkey '^[[1;5C' forward-word                    # ctrl + ->
+bindkey '^[[1;5D' backward-word                   # ctrl + <-
+
+# aliases and funcs
+alias ls='ls --color=auto'
+alias vim='nvim'
+alias gs='git status'
+alias f='cd $(find ~/personal/ ~/work -mindepth 1 -maxdepth 1 | fzf)'
+alias sdi='shutdown -h now'
+
+mkcd() {
+   mkdir -p "$1" && cd "$1"
+}
+
+# autostart
+if [ -z $TMUX ]; then
+   tmux_sessions a code
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

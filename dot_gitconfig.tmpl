@@ -1,8 +1,10 @@
 [user]
-	email = {{ pass "github/personal/email" | trim }}
-	name = {{ pass "github/personal/name" | trim }}
+	email = {{ pass "personal/github/email" | trim }}
+	name = {{ pass "personal/github/name" | trim }}
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-[includeIf "gitdir:~/work/innowise/"]
-	path = ~/.gitconfig-innowise
+{{ if (pass "work/company") -}}
+[includeIf "gitdir:~/work/{{ pass "work/company" | trim }}/"]
+	path = ~/.gitconfig-work
+{{ end -}}
