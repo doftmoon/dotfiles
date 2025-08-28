@@ -9,6 +9,7 @@
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
 {{- if and (lookPath "pass") (pass "work/company") -}}
 [includeIf "gitdir:~/work/{{ pass "work/company" | trim }}/"]
 	path = ~/.gitconfig-work
