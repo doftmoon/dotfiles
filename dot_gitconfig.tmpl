@@ -1,10 +1,15 @@
 [user]
+   {{- if (lookPath "pass") }}
 	email = {{ pass "personal/github/email" | trim }}
 	name = {{ pass "personal/github/name" | trim }}
+   {{- else }}
+   email = 
+   name = 
+   {{- end }}
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-{{ if (pass "work/company") -}}
+{{- if and (lookPath "pass") (pass "work/company") -}}
 [includeIf "gitdir:~/work/{{ pass "work/company" | trim }}/"]
 	path = ~/.gitconfig-work
-{{ end -}}
+{{- end }}
