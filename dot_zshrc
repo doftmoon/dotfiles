@@ -3,6 +3,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 export GOPATH=$HOME/go
+export PATH=$PATH:/opt/nvim/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # zsh options
