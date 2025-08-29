@@ -1,4 +1,4 @@
-{{- if and (lookPath "pass") (pass "work") -}}
+{{ if and (lookPath "pass") (pass "work") -}}
 [user]
 	email = {{ pass "work/git/email" | trim }}
 	name = {{ pass "work/git/name" | trim }}
