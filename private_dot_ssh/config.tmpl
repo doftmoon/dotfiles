@@ -1,0 +1,16 @@
+Host github.com
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/
+   IdentitiesOnly yes
+
+Host gitlab.com
+   PreferredAuthentications publickey
+   IdentityFile ~/.ssh/
+
+Host bitbucket.org
+  HostName bitbucket.org
+  User git
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/
+  IdentitiesOnly yes
