@@ -4,7 +4,7 @@ export VISUAL='nvim'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/opt/nvim/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
 
 # zsh options
 setopt PROMPT_SUBST
@@ -27,8 +27,9 @@ bindkey '^[[1;5D' backward-word                   # ctrl + <-
 alias ls='ls --color=auto'
 alias vim='nvim'
 alias gs='git status'
+alias tk='tmux kill-server'
 alias f='cd $(find ~/personal/ ~/work -mindepth 1 -maxdepth 1 | fzf)'
-alias sdi='shutdown -h now'
+alias sdi='shutdown now'
 
 mkcd() {
    mkdir -p "$1" && cd "$1"

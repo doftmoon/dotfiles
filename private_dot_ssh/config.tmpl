@@ -1,16 +1,22 @@
 Host github.com
    HostName github.com
    User git
-   IdentityFile ~/.ssh/
+   Port 22
+   IdentityFile ~/.ssh/personal_git
    IdentitiesOnly yes
 
 Host gitlab.com
+   HostName gitlab.com
+   User git
+   Port 22
    PreferredAuthentications publickey
-   IdentityFile ~/.ssh/
+   IdentityFile ~/.ssh/work_git
+   IdentitiesOnly yes
 
 Host bitbucket.org
-  HostName bitbucket.org
-  User git
-  PreferredAuthentications publickey
-  IdentityFile ~/.ssh/
-  IdentitiesOnly yes
+   HostName bitbucket.org
+   User git
+   Port 22
+   PreferredAuthentications publickey
+   IdentityFile ~/.ssh/work_git
+   IdentitiesOnly yes
