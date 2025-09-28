@@ -1,34 +1,51 @@
-# ~/.zshrc
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-export GOPATH=$HOME/go
-export PATH=$PATH:/opt/nvim/
-export PATH=$PATH:$GOPATH/bin
-
 # zsh options
-setopt PROMPT_SUBST
-
-# completions
-autoload -Uz compinit
-compinit -C
+zstyle :compinstall filename '/home/doftmoon/.zshrc'
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
+
+autoload -Uz compinit
+compinit
+
+setopt PROMPT_SUBST
 PROMPT='%F{blue}%1~%f %F{red}${vcs_info_msg_0_}%f%F{green}→%f '
+
+{{ if lookPath "nvim" -}}
+export EDITOR='nvim'
+export VISUAL='nvim'
+{{- end }}
+{{ if and (lookPath "gemini") (pass "personal") -}}
+export GOOGLE_CLOUD_PROJECT={{ pass "personal/ai/geminicli" | trim }}
+{{- end }}
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/opt/nvim/
+export PATH=$PATH:$GOPATH/bin
 
 # keybindings
 bindkey -e
 bindkey '^[[1;5C' forward-word                    # ctrl + ->
 bindkey '^[[1;5D' backward-word                   # ctrl + <-
 
-# aliases and funcs
+# aliases and helper funcs
+{{- if lookPath "eza" }}
+alias ls='eza'
+{{- else }}
 alias ls='ls --color=auto'
+{{- end }}
+{{- if lookPath "nvim" }}
 alias vim='nvim'
+{{- end }}
+{{- if lookPath "git" }}
 alias gs='git status'
+{{- end }}
+{{- if lookPath "tmux" }}
 alias tk='tmux kill-server'
+{{- end }}
+{{- if lookPath "fzf" }}
 alias f='cd $(find ~/personal/ ~/work -mindepth 1 -maxdepth 1 | fzf)'
+{{- end }}
 alias sdi='shutdown now'
 
 mkcd() {
@@ -36,14 +53,9 @@ mkcd() {
 }
 
 # autostart
-if [ -z $TMUX ]; then
-   tmux_sessions a code
-fi
-
 {{- if stat (joinPath .chezmoi.homeDir ".nvm") }}
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 {{- end }}
 
