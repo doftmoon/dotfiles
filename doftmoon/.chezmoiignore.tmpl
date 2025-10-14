@@ -5,3 +5,12 @@
 {{- if not (lookPath "kitty") -}}
 .config/kitty
 {{- end }}
+
+{{- if not (lookPath "waybar") -}}
+.config/waybar
+{{- end }}
+
+{{- if not .personal -}}
+.ssh
+.ssh/**
+{{- end }}

@@ -19,6 +19,8 @@ export VISUAL='nvim'
 export GOOGLE_CLOUD_PROJECT={{ pass "personal/ai/geminicli" | trim }}
 {{- end }}
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$HOME/Android/Sdk/platform-tools
 export GOPATH=$HOME/go
 export PATH=$PATH:/opt/nvim/
 export PATH=$PATH:$GOPATH/bin

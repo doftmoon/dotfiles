@@ -1,0 +1,15 @@
+@define-color bar-bg rgba(43, 48, 59, 0.5);
+@define-color clock-bg grey;
+@define-color clock-text white;
+@define-color bluetooth-bg grey;
+@define-color bluetooth-test white;
+@define-color sound-bg grey;
+@define-color sound-text white;
+@define-color net-bg grey;
+@define-color net-text white;
+@define-color cpu-bg grey;
+@define-color cpu-text white;
+@define-color mem-bg grey;
+@define-color mem-text white;
+@define-color bat-bg grey;
+@define-color bat-text white;

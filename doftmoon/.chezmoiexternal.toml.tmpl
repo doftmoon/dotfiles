@@ -1,4 +1,8 @@
+{{ if not .ephemeral }}
+
 [".config/nvim"]
    type = "git-repo"
    url = "https://github.com/doftmoon/nvim.git"
    refreshPeriod = "168h"
+
+{{- end }}
